@@ -1030,8 +1030,9 @@ function ::TmToString() {
       sTm = sTm # "${ruleConditionLblTimeDuringNight} ";
     }
     if (tm.CalDuration() != 0) {
-      !sTm = sTm # "bis ";
-      !sTm = sTm # " Uhr";
+      sTm = sTm # "${lblTo} ";
+      sTm = sTm # (tm.TimeSeconds() + tm.CalDuration()).ToTime().Format("%H:%M");
+      sTm = sTm # " ${ruleConditionLblTimeClock} ";
     }
     
     integer iCalRepCount = tm.CalRepetitionCount();
