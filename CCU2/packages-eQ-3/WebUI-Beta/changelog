@@ -2,6 +2,240 @@
 ReGaHss ChangeLog
 -----------------
 
+2019-04-29 Jens Maus <mail@jens-maus.de>
+
+  * fixed another minor timer module issue where during winter->summer dst
+    change a periodic timer could have been executed twice with the same
+    begin time. In addition, even timers outside the start/stop times of
+    the dst change were incorrectly executed.
+
+2019-04-25 Jens Maus <mail@jens-maus.de>
+
+  * fixed another issue in the begin time calculation of period
+    timers which could result in unexpected segfaults under certain
+    conditions.
+
+2019-04-24 Jens Maus <mail@jens-maus.de>
+
+  * the history buffer size can now be specified/modified using
+    rega.conf by specifying a HistoryBufferSize setting.
+
+2019-04-17 Jens Maus <mail@jens-maus.de>
+
+  * implemented new system.SunAzimuth() and system.SunAltitude() script
+    functions which will return the current sun position in degrees
+    relative to the current position and time.
+
+2019-04-12 Jens Maus <mail@jens-maus.de>
+
+  * integrated another time module fix where upon startup all periodic
+    timers fired a single time even though their time didn't match the
+    actual time they should fire.
+
+2019-04-11 Jens Maus <mail@jens-maus.de>
+
+  * moved scheduler thread startup to be started earlier so that timer
+    evaluations can be performed more early.
+  * fixed minor bug where in case a system variable was connected to
+    a channel this reference wasn't cleared correctly upon removal of
+    the channel/device (https://homematic-forum.de/forum/viewtopic.php?f=31&t=50077)
+
+2019-04-10 Jens Maus <mail@jens-maus.de>
+
+  * removed 'Server' HTTP response header to prevent any detailed web
+    server system type analyses.
+
+2019-04-02 Jens Maus <mail@jens-maus.de>
+
+  * fixed bug in the astro day/night calculation routines where on a DST
+    switch day from midnight till the switch time and incorrect sunrise
+    or sunset time was returned.
+  * add timestamp to console output and take care that output is properly
+    synchronized.
+
+#### R1.00.0388.0206 (occu: XXXXXXX) Release ##############################
+
+2019-03-21 Jens Maus <mail@jens-maus.de>
+
+  * fixed DST/non-DST switching issues in timer module which could have
+    resulted in a segfault if a time interval over the DST switching
+    time was created by a user.
+
+2019-03-18 Jens Maus <mail@jens-maus.de>
+
+  * implemented a new sunrise/sunset calculation routine which
+    is fully compatible to the way sunrise/sunset is calculated
+    on other homematic devices (e.g. access point, cloud service).
+    Now sunset/sunrise times should exactly match the times
+    calculated throughout all homematic devices/services.
+
+2019-03-14 Jens Maus <mail@jens-maus.de>
+
+  * fixed some compiler warnings and reduced probability of
+    potential buffer overflows in certain situations.
+
+#### R1.00.0388.0205 (occu: XXXXXXX) Release ##############################
+
+2019-03-13 Jens Maus <mail@jens-maus.de>
+
+  * replace more buffer overflow prone function uses with buffer
+    overflow safe variants which should catch some known issues
+    in the handling of large http requests.
+
+2019-03-04 Jens Maus <mail@jens-maus.de>
+
+  * fixed bug in session clearance where a logout didn't completly
+    invalidate all session relevant information.
+  * improved login security by preventing unauthorized users from
+    logging into WebUI and using the scripting engine at all.
+  * optimized logging output in various areas so that bug reports can
+    be more easily tracked down. Also changed some messages that were
+    previously flagged as "error" messages to be flagged as "warnings"
+    only now that we have that additional category.
+
+2019-03-01 Jens Maus <mail@jens-maus.de>
+
+  * fixed minor bug where for interfaces with an empty URL the init method
+    was still tried to be executed.
+
+2019-02-28 Jens Maus <mail@jens-maus.de>
+
+  * added possibility to log warnings instead of just error messages to
+    syslog & co. This should help to better differentiate between real
+    problems and warning messages that are just pure informational
+    messages.
+
+#### R1.00.0388.0204 (occu: 9fff131) Release ##############################
+
+2018-12-08 Jens Maus <mail@jens-maus.de>
+
+  * fixed string backslash unescaping routines to correctly unescape
+    double backslash uses and thus allow to define e.g. \t by using
+    a "\\t" string which were not possible before.
+
+2018-12-07 Jens Maus <mail@jens-maus.de>
+
+  * implemented missing 'break' and 'continue' statements to break out
+    of while() and foreach() loops and to also continue with the next
+    iteration like this is commonly performed in other script languages.
+    This refs https://github.com/jens-maus/RaspberryMatic/issues/224
+
+2018-12-06 Jens Maus <mail@jens-maus.de>
+
+  * fixed bug where elseif() within a while/foreach() loop didn't work as
+    expected but was quiting the loop too early.
+    This fixes https://github.com/jens-maus/RaspberryMatic/issues/404
+
+2018-12-05 Jens Maus <mail@jens-maus.de>
+
+  * fixed webserver to only create and reserve a session ID in case a
+    successfull user login is performed (either manual or autologin). This
+    should prevent from Denial-of-Service (DoS) situations where certain
+    internal service could send multiple web requests to identify if
+    a http server is running and thus could eat up all available session
+    slots ending up in "Zu viele gleichzeitige Verbindungen" errors.
+
+    NOTE: This change requires that the file /www/rega/index.htm will
+          contain a small change so that "SessionId" is not a mandatory
+          variable anymore.
+
+2018-11-27 Jens Maus <mail@jens-maus.de>
+
+  * fixed http response to manage more than 800kb of response payload so
+    that the internal web server of ReGaHss can manage way larger http
+    response data. This should finally allow to, e.g. serve larger
+    system variables http displays at Settings -> Systemvariables with
+    e.g. ~1k of system variables or with longer device list web pages.
+
+#### R1.00.0388.0203 (occu: c751df5) Release ##############################
+
+2018-11-11 Jens Maus <mail@jens-maus.de>
+
+  * upon loading the interfaces on startup non-existing interfaces are
+    now flagged invalid by wiping the URL parameter so that xmlrpc calls
+    to still existing devices of these non-existing interfaces are returned
+    immediately instead of potentially resulting in long timeouts in trying
+    to contact these interfaces.
+
+2018-11-07 Jens Maus <mail@jens-maus.de>
+
+  * fixed bug which caused a double execution of State() events on HSSdp
+    device objects.
+
+#### R1.00.0388.0202 (occu: 35bcf30) Release ##############################
+
+2018-10-28 Jens Maus <mail@jens-maus.de>
+
+  * more fixes for maintaining more than 65k objects in ReGaHss.
+
+#### R1.00.0388.0201 (occu: 17ef669) Release ##############################
+
+2018-10-26 Jens Maus <mail@jens-maus.de>
+
+  * fixed certain issues related to the 65k object boundary change.
+
+#### R1.00.0388.0200 (occu: 6e4dbdb) Release ##############################
+
+2018-09-27 Jens Maus <mail@jens-maus.de>
+
+  * fixed bug in .State() call on HSSdp objects which always returned false.
+    This fixes https://github.com/jens-maus/RaspberryMatic/issues/367
+
+2018-09-25 Jens Maus <mail@jens-maus.de>
+
+  * implemented SortByName() for IseIdArray type which will allow to sort an
+    idarray by the names of the objects being part of the array. It will return
+    true if the sort operation succeded and false if not.
+  * fixed "CENTRAL:0" PONG xmlrpc warnings by ignoring PONG events to "CENTRAL"
+    in general. Also switched the unknown HSSDevice messages to info rather
+    than always logging as an error.
+
+2018-08-20 Jens Maus <mail@jens-maus.de>
+
+  * implemented SHA512-based password storage with automatic conversion of
+    old encoded user passwords once a successfull login had been processed.
+
+2018-08-20 Jens Maus <mail@jens-maus.de>
+
+  * applied changes to raise the limit for the maximum number of objects from
+    2^16 to 2^31 so that we can support way larger installations in future.
+
+2018-09-25 Jens Maus <mail@jens-maus.de>
+
+  * fixed "CENTRAL:0" PONG xmlrpc warnings by ignoring PONG events to "CENTRAL"
+    in general. Also switched the unknown HSSDevice messages to info rather
+    than always logging as an error.
+
+#### BETA29-2018-08-25 (occu: 3f8bb8d) Release ##############################
+
+2018-08-05 Jens Maus <mail@jens-maus.de>
+
+  * fixed use of "&" with system.Exec() to background executions which
+    sometimes resulted in stalled zombie processes.
+
+2018-08-04 Jens Maus <mail@jens-maus.de>
+
+  * fixed incorrect "Failed to close mutex" error outputs when the mutex
+    destroy operation returned EBUSY.
+
+2018-07-17 Jens Maus <mail@jens-maus.de>
+
+  * don't allow incorrect uses of Variable() which potentially may invalidate
+    important information. Instead we output a warning of the incorrect use
+    and suggest alternative functions to be used.
+
+2018-05-28 Jens Maus <mail@jens-maus.de>
+
+  * we use dynamic string arrays all over the place now. This finally removes
+    all obsolete string boundaries regarding text length. This e.g. enables to
+    use large texts in DPInfo(), etc.
+  * removed 49 character workaround which tried to solve problems with
+    truncated object names that old legacy versions of ReGaHss created and
+    thus object name comparisons with the full name started to fail in newer
+    ReGaHss versions.
+
+#### BETA28-2018-02-27 (f1178dc) Release ####################################
+
 2018-02-27 Jens Maus <mail@jens-maus.de>
 
   * optimized system.Exec() to avoid creating zombie processes in case

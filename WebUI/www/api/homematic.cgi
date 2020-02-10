@@ -22,14 +22,12 @@
 # um eine Notlösung. 
 ##
 
-set central true
+set central true 
 
 # Zentrale oder Konfigtool (/www/ = Zentrale)
 if {$env(DOCUMENT_ROOT) != "\/www\/"} then {
   set central false
 }
-
-set central true
 
 #####################
 # Verwendete Module #
