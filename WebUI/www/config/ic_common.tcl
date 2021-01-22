@@ -358,10 +358,10 @@ proc put_linkimage_dev {} {
 
   puts "<table cellspacing=\"10\" border=\"0\">"
   puts "<tr>"
-  puts "<td align=\"center\">$img_devi</td>"
+  puts "<td style=\"text-align:center;\">$img_devi</td>"
   puts "</tr>"
   puts "<tr>"
-  puts "<td align=\"center\">$devi_descr(TYPE)</td>"
+  puts "<td style=\"text-align:center;\">$devi_descr(TYPE)</td>"
   puts "</tr>"
   puts "</table>"
 }
@@ -399,14 +399,14 @@ proc put_linkimages {} {
 
   puts "<table cellspacing=\"10\" border=\"0\">"
   puts "<tr>"
-  puts "<td align=\"center\">$img_devi</td>"
-  puts "<td align=\"center\">===</td>"
-  puts "<td align=\"center\">$img_peer</td>"
+  puts "<td style=\"text-align:center;\">$img_devi</td>"
+  puts "<td style=\"text-align:center;\">===</td>"
+  puts "<td style=\"text-align:center;\">$img_peer</td>"
   puts "</tr>"
     puts "<tr>"
-  puts "<td align=\"center\">$devi_descr(TYPE)</td>"
-  puts "<td align=\"center\">&nbsp;</td>"
-  puts "<td align=\"center\">$peer_descr(TYPE)</td>"
+  puts "<td style=\"text-align:center;\">$devi_descr(TYPE)</td>"
+  puts "<td style=\"text-align:center;\">&nbsp;</td>"
+  puts "<td style=\"text-align:center;\">$peer_descr(TYPE)</td>"
   puts "</tr>"
   puts "</table>"
 }
@@ -770,7 +770,7 @@ proc put_picDiv {} {
   puts "<div id=\"picDiv\" style=\"position:absolute; left:0px; top:0px; width:200px; height:200px; z-index:1; display:none;\">"
   puts "  <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"CLASS21804\">"
   puts "    <tr>"
-  puts "      <td style=\"CLASS21807\" align=\"center\" valign=\"middle\"><img width=\"200\" alt=\"Loading...\" src=\"img/loading.gif\" id=\"picDivImg\" /></td>"
+  puts "      <td style=\"CLASS21807\"  style=\"text-align:center; vertical-align:middle;\"\"><img width=\"200\" alt=\"Loading...\" src=\"img/loading.gif\" id=\"picDivImg\" /></td>"
   puts "    </tr>"
   puts "  </table>"
   puts "</div>"
@@ -815,7 +815,7 @@ proc put_picDiv_wz { {width 250} {height 250} } {
   #puts "<div id=\"picDiv\" style=\"position:absolute; left:0px; top:0px; width:$css_w height:$css_h; z-index:1; visibility: hidden; margin: 0; padding: 0; background-color: white;\">"
   #puts "  <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" style=\"width:$css_w; height:$css_h; border: 1px solid #000066\">"
   #puts "    <tr>"
-  #puts "      <td bgcolor=\"#FFFFFF\" align=\"center\" valign=\"middle\"><img alt=\"Loading...\" src=\"img/loading.gif\" id=\"picDivImg\" /></td>"
+  #puts "      <td bgcolor=\"#FFFFFF\"  style=\"text-align:center; vertical-align:middle;\"><img alt=\"Loading...\" src=\"img/loading.gif\" id=\"picDivImg\" /></td>"
   #puts "    </tr>"
   #puts "  </table>"
   #puts "<img alt=\"Loading...\" src=\"img/loading.gif\" id=\"picDivImg\" />"
@@ -1290,7 +1290,7 @@ proc cmd_link_paramset2 {iface address pps_descr pps ps_type {pnr 0}} {
 
           append s "<input type=\"hidden\" name=\"$param_id\"   value=\"$value_orig\" $id                 $access style=\"visibility:hidden;display:none;\" />"
           append s "<input type=\"text\"   name=\"__$param_id\" value=\"$value\"       id=\"$input_idval\" $access $hidden"
-          append s "  onkeyup=\"ProofAndSetValue('$input_idval', '${idval}', parseInt($min), parseInt($max), parseFloat([expr 1 / $factor]));\" /></td>"
+          append s "  onblur=\"ProofAndSetValue('$input_idval', '${idval}', parseInt($min), parseInt($max), parseFloat([expr 1 / $factor]));\" /></td>"
           append s "<td><div id=\"${input_idval}_unit\" $hidden class=\"_stringtable_value\">$unit ($min-$max)</div></td>"
       }
       "FLOAT" {
@@ -1383,7 +1383,7 @@ proc cmd_link_paramset2 {iface address pps_descr pps ps_type {pnr 0}} {
 
           append s "<input type=\"hidden\" name=\"$param_id\"   value=\"$value_orig\" $id                 $access style=\"visibility:hidden;display:none;\" />"
           append s "<input type=\"text\"   name=\"__$param_id\" value=\"$value\"       id=\"$input_idval\" $access $hidden"
-          append s "  onkeyup=\" ProofAndSetValue('$input_idval', '${idval}', parseFloat($min), parseFloat($max), parseFloat([expr 1 / $factor]));\" /></td>"
+          append s "  onblur=\" ProofAndSetValue('$input_idval', '${idval}', parseFloat($min), parseFloat($max), parseFloat([expr 1 / $factor]));\" /></td>"
           append s "<td><div id=\"${input_idval}_unit\" $hidden>$unit ($min-$max)</div></td>"
       }
       "ENUM" {
