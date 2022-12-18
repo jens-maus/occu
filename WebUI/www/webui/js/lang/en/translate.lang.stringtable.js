@@ -334,6 +334,9 @@ jQuery.extend(true,langJSON, {
     "stringTableDisplayClock" : "Clock symbol",
     "stringTableDisplayDoor" : "Door symbol",
     "stringTableDisplayEnergyOptions" : "The display will be switched off after",
+    "stringTableDisplayInputTransmitterTitle" : "Glass Display",
+    "stringTableDisplayInputLevelTransmitterTitle" : "Glass Display",
+    "stringTableDisplayInputThermostatTransmitterTitle" : "Glass Display",
     "stringTableDisplayInverting" :  "Display inverting",
     "stringTableDisplayMessageShowTime" : "Display duration for CCU messages",
     "stringTableDisplayMessageShowTimePermanent" : "permanent",
@@ -362,7 +365,7 @@ jQuery.extend(true,langJSON, {
     "stringTableDurationUnitH" : "Unit duration: Hours",
     "stringTableDurationUnitM" : "Unit duration: Minutes",
     "stringTableDurationUnitS" : "Unit duration: Seconds",
-    "stringTableDurationUnit10MS" : "Unit duration: 10 mS",
+    "stringTableDurationUnit10MS" : "Unit duration: 10 ms",
     "stringTableDurationValue" : "Value duration",
     "stringTableDuration" : "Duration",
     "stringTableDutyCycleFalse" : "Duty cycle OK",
@@ -854,6 +857,7 @@ jQuery.extend(true,langJSON, {
     "stringTableTxMinDelay" : "Minimum transmission interval",
     "stringTableTxMinDelayUnit" : "Unit of minimum transmission interval",
     "stringTableTxMinDelayValue" : "Value minimum transmission interval",
+    "stringTableUniversalLightReceiverTitle" : "LED Controller",
     "stringTableUnreachFalse" : "Device communication OK",
     "stringTableUnreachTrue" : "Device communication disturbed",
     "stringTableUnreachFalseBR" : "Device communication<br/>OK",
@@ -1128,7 +1132,7 @@ jQuery.extend(true,langJSON, {
     "stringTableRampTimeUnitH" : "Unit ramp time: Hours",
     "stringTableRampTimeUnitM" : "Unit ramp time: Minutes",
     "stringTableRampTimeUnitS" : "Unit ramp time: Seconds",
-    "stringTableRampTimeUnit10MS" : "Unit ramp time: mS",
+    "stringTableRampTimeUnit10MS" : "Unit ramp time: ms",
     "stringTableRampTimeValue" : "Value ramp time",
     "stringTableRampTime" : "Ramp time",
     "stringTableIdentificationModeLCDBacklightFalse" : "Lighting Display: OFF",
@@ -1395,3 +1399,13 @@ langJSON.en.stringTableColorBehaviourFlashFast = langJSON.en.optionBlinkFlashFas
 langJSON.en.stringTableColorBehaviourBillowSlow = langJSON.en.optionBlinkBillowSlow;
 langJSON.en.stringTableColorBehaviourBillowMiddle = langJSON.en.optionBlinkBillowMiddle;
 langJSON.en.stringTableColorBehaviourBillowFast = langJSON.en.optionBlinkBillowFast;
+
+langJSON.en.stringTableValveState_0 = langJSON.en.stringTableValveStateNotAvailable;
+langJSON.en.stringTableValveState_1 = langJSON.en.stringTableValveStateRunToStart;
+langJSON.en.stringTableValveState_2 = langJSON.en.stringTableValveStateWaitForAdaption;
+langJSON.en.stringTableValveState_3 = langJSON.en.stringTableValveStateAdaptionInProgress;
+langJSON.en.stringTableValveState_4 = langJSON.en.stringTableValveStateAdaptionDone;
+langJSON.en.stringTableValveState_5 = langJSON.en.stringTableValveStateToTight;
+langJSON.en.stringTableValveState_6 = langJSON.en.stringTableValveStateAdjTooBig;
+langJSON.en.stringTableValveState_7 = langJSON.en.stringTableValveStateAdjToSmall;
+langJSON.en.stringTableValveState_8 = langJSON.en.stringTableValveStateErrorPosition;

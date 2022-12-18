@@ -15,7 +15,7 @@ jQuery.extend(true, langJSON, {
 
     "stringTableDisplayUpdateRequest" : "Display Update Request",
 
-    "comment" : "Relase B/2022",
+    "comment" : "Release B/2022",
     "stringTableMiobDinConfig" : "Digital input operating mode",
 
     "lblAbortEventSendingChannel" : "Cancel old transmission",
@@ -41,6 +41,40 @@ jQuery.extend(true, langJSON, {
     "optionWindowDriveLevelOnDelay" : "Delayed opening",
     "optionWindowDriveLevelOn" : "Open",
     "optionWindowDriveLevelOffDelay" : "Delayed closing",
+
+    "comment" : "Release C/2022",
+
+    "lblColorHSVValue" : "Colour shade",
+    "lblColorSaturation" : "Saturation",
+    "lblColorBrightness" : "Brightness",
+
+    "btnHCL" : "HCL",
+    "btnDim2Warm" : "Dim2Warm",
+
+    "stringTableActivityStateDown" : "Ramp down",
+    "stringTableActivityStateUnknown" : "Activity unknown",
+    "stringTableActivityStateUp" : "Ramp up",
+    "stringTableActivityStable" : "Status stable",
+
+    "stringTableWGDDisplayDataString" : "Display text",
+
+    "optionColorValue" : "Colour value",
+    "optionColorTemperature" : "Colour temperature",
+    "optionHue" : "Hue",
+    "optionSaturation" : "Saturation",
+
+    "fwUpdatePressConfigKey" :
+      "Make sure that the device is within radio range of the "+HMIdentifier.de.CCUShortName+".  If necessary, press the system button on the device.<br/><br/>"+
+      "For all Homematic IP sensors, such as the weather sensors, pressing the button is not mandatory. " +
+      "The devices automatically report in the course of a day and then start the update on their own.",
+
+    "fwUpdatePressSystemKey" :
+      "Make sure that the device is within radio range of the "+HMIdentifier.de.CCUShortName+".  If necessary, press the system button on the device.<br/><br/>"+
+      "For all Homematic IP sensors, such as the weather sensors, pressing the button is not mandatory. " +
+      "The devices automatically report in the course of a day and then start the update on their own.",
+
+    "minTemp" : "min.<br/>Temp",
+    "maxTemp" : "max.<br/>Temp",
 
     "noMoreKeys" : ""
   }
