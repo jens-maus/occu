@@ -1,0 +1,12 @@
+"dimmer_on_brighter" : "Brightness (V) - on/brighter",
+"dimmer_off_darker" : "Brightness (V) - off/darker",
+"dimmer_on_off_b_d" : "Helligkeit (V) - on/off &amp; brighter/darker",
+"color_up" : "Colour value (H) - up",
+"color_down" : "Colour value (H) - down",
+"color_up_down" : "Colour value (H) - up/down",
+
+"saturation_up" : "Saturation (S) - up",
+"saturation_down" : "Saturation (S) -  down",
+"saturation_up_down" : "Saturation (S) -  up/down",
+
+"optionColorVal" : "Colour value",

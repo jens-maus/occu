@@ -27,7 +27,7 @@ proc getComboBox {prn pref specialElement type {extraparam ""}} {
       }
 
       "eventDelay" {
-        append s [getPanelA $prn $pref $specialElement]
+        append s [getPanelA $prn $pref $specialElement "eventDelay"]
       }
 
       "eventFilterTime" {
@@ -35,7 +35,7 @@ proc getComboBox {prn pref specialElement type {extraparam ""}} {
       }
 
       "eventRandomTime" {
-        append s [getPanelA $prn $pref $specialElement]
+        append s [getPanelA $prn $pref $specialElement "eventRandomTime"]
       }
 
       "txMinDelay" {
@@ -99,7 +99,7 @@ proc getComboBox {prn pref specialElement type {extraparam ""}} {
     return $s
 }
 
-proc getPanelA {prn pref specialElement} {
+proc getPanelA {prn pref specialElement {paramType ""}} {
       set s ""
       append s "<td>"
       append s  "<select id=\"timeDelayA\_$prn\_$pref\" onchange=\"setPanelAValues(this.id, $prn, $pref, \'$specialElement\')\">"
@@ -118,6 +118,15 @@ proc getPanelA {prn pref specialElement} {
         append s "<option value=\"12\">\${optionUnit1H}</option>"
         append s "<option value=\"13\">\${stringTableEnterValue}</option>"
       append s "/<select>"
+
+      if {$paramType == "eventDelay"} {
+        append s "&nbsp;[getHelpIcon EVENT_DELAY 450 75]"
+      }
+
+      if {$paramType == "eventRandomTime"} {
+        append s "&nbsp;[getHelpIcon EVENT_RANDOMTIME 450 75]"
+      }
+
       append s "</td>"
 
       append s "<script type=\"text/javascript\">"
@@ -149,7 +158,7 @@ proc getPanelA {prn pref specialElement} {
 
           append s "currentVal = baseVal+factorVal,"
           append s "optionVal = (optionMap\[currentVal\] != undefined) ? optionMap\[currentVal\] : 13;"
-          append s "window.setTimeout(function() {jQuery(\"#timeDelayA_\" + prn + \"_\" + pref).val(optionVal).change();}, 50);"
+          append s "window.setTimeout(function() {jQuery(\"#timeDelayA_\" + prn + \"_\" + pref).val(optionVal).change();}, 10);"
 
           #append s "console.log(\"DELAY baseVal: \" + baseVal + \" - factorVal: \" + factorVal + \" - currentVal: \" + currentVal + \" - optionVal: \" + optionVal);"
 
@@ -304,7 +313,7 @@ proc getDelayShort {prn pref specialElement} {
 
           append s "currentVal = baseVal+factorVal,"
           append s "optionVal = (optionMap\[currentVal\] != undefined) ? optionMap\[currentVal\] : 12;"
-          append s "window.setTimeout(function() {jQuery(\"#timeDelay_\" + prn + \"_\" + pref).val(optionVal).change();}, 50);"
+          append s "window.setTimeout(function() {jQuery(\"#timeDelay_\" + prn + \"_\" + pref).val(optionVal).change();}, 10);"
 
           #append s "console.log(\"DELAY baseVal: \" + baseVal + \" - factorVal: \" + factorVal + \" - currentVal: \" + currentVal + \" - optionVal: \" + optionVal);"
 
@@ -437,7 +446,7 @@ proc getDelayShortA {prn pref specialElement} {
 
           append s "currentVal = baseVal+factorVal,"
           append s "optionVal = (optionMap\[currentVal\] != undefined) ? optionMap\[currentVal\] : 6;"
-          append s "window.setTimeout(function() {jQuery(\"#timeDelay_\" + prn + \"_\" + pref).val(optionVal).change();}, 50);"
+          append s "window.setTimeout(function() {jQuery(\"#timeDelay_\" + prn + \"_\" + pref).val(optionVal).change();}, 10);"
 
           #append s "console.log(\"DELAY baseVal: \" + baseVal + \" - factorVal: \" + factorVal + \" - currentVal: \" + currentVal + \" - optionVal: \" + optionVal);"
 
@@ -547,7 +556,7 @@ proc getEventFilterTime {prn pref specialElement} {
 
           append s "currentVal = baseVal+factorVal,"
           append s "optionVal = (optionMap\[currentVal\] != undefined) ? optionMap\[currentVal\] : 8;"
-          append s "window.setTimeout(function() {jQuery(\"#timeDelay_\" + prn + \"_\" + pref).val(optionVal).change();}, 50);"
+          append s "window.setTimeout(function() {jQuery(\"#timeDelay_\" + prn + \"_\" + pref).val(optionVal).change();}, 10);"
 
           #append s "console.log(\"DELAY baseVal: \" + baseVal + \" - factorVal: \" + factorVal + \" - currentVal: \" + currentVal + \" - optionVal: \" + optionVal);"
 
@@ -671,7 +680,7 @@ proc getDelay0to20M_step2M {prn pref specialElement} {
 
           append s "currentVal = baseVal+factorVal,"
           append s "optionVal = (optionMap\[currentVal\] != undefined) ? optionMap\[currentVal\] : 11;"
-          append s "window.setTimeout(function() {jQuery(\"#timeDelay_\" + prn + \"_\" + pref).val(optionVal).change();}, 50);"
+          append s "window.setTimeout(function() {jQuery(\"#timeDelay_\" + prn + \"_\" + pref).val(optionVal).change();}, 10);"
 
           #append s "console.log(\"DELAY baseVal: \" + baseVal + \" - factorVal: \" + factorVal + \" - currentVal: \" + currentVal + \" - optionVal: \" + optionVal);"
 
@@ -811,7 +820,7 @@ proc getDelay {prn pref specialElement} {
 
           append s "currentVal = baseVal+factorVal,"
           append s "optionVal = (optionMap\[currentVal\] != undefined) ? optionMap\[currentVal\] : 11;"
-          append s "window.setTimeout(function() {jQuery(\"#timeDelay_\" + prn + \"_\" + pref).val(optionVal).change();}, 50);"
+          append s "window.setTimeout(function() {jQuery(\"#timeDelay_\" + prn + \"_\" + pref).val(optionVal).change();}, 10);"
 
           #append s "console.log(\"DELAY baseVal: \" + baseVal + \" - factorVal: \" + factorVal + \" - currentVal: \" + currentVal + \" - optionVal: \" + optionVal);"
 
@@ -830,7 +839,11 @@ proc getDelay {prn pref specialElement} {
           append s "factorElem = jQuery(\"#separate_\" +specialElement + \"_\"+ prn +\"_\" + (parseInt(pref) + 1)),"
           append s "timeBaseTRElem = jQuery(\"#timeBase_\" + prn +\"_\"+ pref),"
           append s "timeFactorTRElem = jQuery(\"#timeFactor_\"+prn+\"_\" + (parseInt(pref) + 1)),"
-          append s "spaceTRElem = jQuery(\"#space_\" + prn +\"_\"+ (parseInt(pref) + 1));"
+          append s "spaceTRElem = jQuery(\"#space_\" + prn +\"_\"+ (parseInt(pref) + 1)),"
+          append s "trBlinkElm = jQuery('#'+elmID).parent().parent().next().next().next().next(),"
+          append s "blinkElm = jQuery(trBlinkElm).find('select').first();"
+
+          append s "if ((value == 0) && (blinkElm\[0\].name.indexOf('_BLINK') > -1)) {trBlinkElm.hide();blinkElm.val(0);} else {trBlinkElm.show();}"
 
           append s "timeBaseTRElem.hide();"
           append s "timeFactorTRElem.hide();"
@@ -949,7 +962,7 @@ proc getTimeOnOffShort {prn pref specialElement {extraparam ""}} {
 
           append s "currentVal = baseVal+factorVal,"
           append s "optionVal = (optionMap\[currentVal\] != undefined) ? optionMap\[currentVal\] : 9;"
-          append s "window.setTimeout(function() {jQuery(\"#timeOnOff_\" + prn + \"_\" + pref).val(optionVal).change();}, 50);"
+          append s "window.setTimeout(function() {jQuery(\"#timeOnOff_\" + prn + \"_\" + pref).val(optionVal).change();}, 10);"
 
           #append s "console.log(\"ONTIME baseVal: \" + baseVal + \" - factorVal: \" + factorVal + \" - currentVal: \" + currentVal + \" - optionVal: \" + optionVal);"
 
@@ -1102,7 +1115,7 @@ proc getTimeOnOff {prn pref specialElement} {
 
           append s "currentVal = baseVal+factorVal,"
           append s "optionVal = (optionMap\[currentVal\] != undefined) ? optionMap\[currentVal\] : 20;"
-          append s "window.setTimeout(function() {jQuery(\"#timeOnOff_\" + prn + \"_\" + pref).val(optionVal).change();}, 50);"
+          append s "window.setTimeout(function() {jQuery(\"#timeOnOff_\" + prn + \"_\" + pref).val(optionVal).change();}, 10);"
 
           #append s "console.log(\"ONTIME baseVal: \" + baseVal + \" - factorVal: \" + factorVal + \" - currentVal: \" + currentVal + \" - optionVal: \" + optionVal);"
 
@@ -1294,7 +1307,7 @@ proc getRampOnOff {prn pref specialElement {extraparam ""}} {
 
           append s "currentVal = baseVal+factorVal,"
           append s "optionVal = (optionMap\[currentVal\] != undefined) ? optionMap\[currentVal\] : 9;"
-          append s "window.setTimeout(function() {jQuery(\"#timeDelay_\" + prn + \"_\" + pref).val(optionVal).change();}, 50);"
+          append s "window.setTimeout(function() {jQuery(\"#timeDelay_\" + prn + \"_\" + pref).val(optionVal).change();}, 10);"
 
           #append s "console.log(\"RAMP baseVal: \" + baseVal + \" - factorVal: \" + factorVal + \" - currentVal: \" + currentVal + \" - optionVal: \" + optionVal);"
 
@@ -1412,7 +1425,7 @@ proc getSwitchingInterval {prn pref specialElement} {
 
           append s "currentVal = baseVal+factorVal,"
           append s "optionVal = (optionMap\[currentVal\] != undefined) ? optionMap\[currentVal\] : 5;"
-          append s "window.setTimeout(function() {jQuery(\"#timeDelay_\" + prn + \"_\" + pref).val(optionVal).change();}, 50);"
+          append s "window.setTimeout(function() {jQuery(\"#timeDelay_\" + prn + \"_\" + pref).val(optionVal).change();}, 10);"
 
           #append s "console.log(\"DELAY baseVal: \" + baseVal + \" - factorVal: \" + factorVal + \" - currentVal: \" + currentVal + \" - optionVal: \" + optionVal);"
 
@@ -1511,7 +1524,7 @@ proc getInterval_1D_7D_14D_28D {prn pref specialElement} {
 
           append s "currentVal = baseVal+factorVal,"
           append s "optionVal = (optionMap\[currentVal\] != undefined) ? optionMap\[currentVal\] : 5;"
-          append s "window.setTimeout(function() {jQuery(\"#timeDelay_\" + prn + \"_\" + pref).val(optionVal).change();}, 50);"
+          append s "window.setTimeout(function() {jQuery(\"#timeDelay_\" + prn + \"_\" + pref).val(optionVal).change();}, 10);"
 
           #append s "console.log(\"DELAY baseVal: \" + baseVal + \" - factorVal: \" + factorVal + \" - currentVal: \" + currentVal + \" - optionVal: \" + optionVal);"
 
@@ -1607,7 +1620,7 @@ proc getSwitchingIntervalOnTime {prn pref specialElement} {
 
           append s "currentVal = baseVal+factorVal,"
           append s "optionVal = (optionMap\[currentVal\] != undefined) ? optionMap\[currentVal\] : 5;"
-          append s "window.setTimeout(function() {jQuery(\"#timeDelay_\" + prn + \"_\" + pref).val(optionVal).change();}, 50);"
+          append s "window.setTimeout(function() {jQuery(\"#timeDelay_\" + prn + \"_\" + pref).val(optionVal).change();}, 10);"
 
           #append s "console.log(\"DELAY baseVal: \" + baseVal + \" - factorVal: \" + factorVal + \" - currentVal: \" + currentVal + \" - optionVal: \" + optionVal);"
 
@@ -1711,7 +1724,7 @@ proc getAutoInterval {prn pref specialElement} {
 
           append s "currentVal = baseVal+factorVal,"
           append s "optionVal = (optionMap\[currentVal\] != undefined) ? optionMap\[currentVal\] : 5;"
-          append s "window.setTimeout(function() {jQuery(\"#timeDelay_\" + prn + \"_\" + pref).val(optionVal).change();}, 50);"
+          append s "window.setTimeout(function() {jQuery(\"#timeDelay_\" + prn + \"_\" + pref).val(optionVal).change();}, 10);"
 
           #append s "console.log(\"DELAY baseVal: \" + baseVal + \" - factorVal: \" + factorVal + \" - currentVal: \" + currentVal + \" - optionVal: \" + optionVal);"
 
@@ -1813,7 +1826,7 @@ proc getBlindRunningTime {prn pref specialElement} {
 
           append s "currentVal = baseVal+factorVal,"
           append s "optionVal = (optionMap\[currentVal\] != undefined) ? optionMap\[currentVal\] : 4;"
-          append s "window.setTimeout(function() {jQuery(\"#timeDelay_\" + prn + \"_\" + pref).val(optionVal).change();}, 50);"
+          append s "window.setTimeout(function() {jQuery(\"#timeDelay_\" + prn + \"_\" + pref).val(optionVal).change();}, 10);"
 
           # append s "console.log(\"DELAY baseVal: \" + baseVal + \" - factorVal: \" + factorVal + \" - currentVal: \" + currentVal + \" - optionVal: \" + optionVal);"
 
@@ -1917,7 +1930,7 @@ proc getSlatRunningTime {prn pref specialElement} {
 
           append s "currentVal = baseVal+factorVal,"
           append s "optionVal = (optionMap\[currentVal\] != undefined) ? optionMap\[currentVal\] : 10;"
-          append s "window.setTimeout(function() {jQuery(\"#timeDelay_\" + prn + \"_\" + pref).val(optionVal).change();}, 50);"
+          append s "window.setTimeout(function() {jQuery(\"#timeDelay_\" + prn + \"_\" + pref).val(optionVal).change();}, 10);"
 
           # append s "console.log(\"DELAY baseVal: \" + baseVal + \" - factorVal: \" + factorVal + \" - currentVal: \" + currentVal + \" - optionVal: \" + optionVal);"
 
@@ -2039,7 +2052,7 @@ proc getMin_10_15_20_25_30 {prn pref specialElement} {
 
           append s "currentVal = baseVal+factorVal,"
           append s "optionVal = (optionMap\[currentVal\] != undefined) ? optionMap\[currentVal\] : 5;"
-          append s "window.setTimeout(function() {jQuery(\"#timeDelay_\" + prn + \"_\" + pref).val(optionVal).change();}, 50);"
+          append s "window.setTimeout(function() {jQuery(\"#timeDelay_\" + prn + \"_\" + pref).val(optionVal).change();}, 10);"
 
           # append s "console.log(\"DELAY baseVal: \" + baseVal + \" - factorVal: \" + factorVal + \" - currentVal: \" + currentVal + \" - optionVal: \" + optionVal);"
 
@@ -2157,7 +2170,7 @@ proc getAlarmTimeMax10Min {prn pref specialElement} {
 
       append s "currentVal = baseVal+factorVal,"
       append s "optionVal = (optionMap\[currentVal\] != undefined) ? optionMap\[currentVal\] : 12;"
-      append s "window.setTimeout(function() {jQuery(\"#timeDelay_\" + prn + \"_\" + pref).val(optionVal).change();}, 50);"
+      append s "window.setTimeout(function() {jQuery(\"#timeDelay_\" + prn + \"_\" + pref).val(optionVal).change();}, 10);"
 
       # append s "console.log(\"DELAY baseVal: \" + baseVal + \" - factorVal: \" + factorVal + \" - currentVal: \" + currentVal + \" - optionVal: \" + optionVal);"
 
@@ -2296,7 +2309,7 @@ proc getBlink {prn pref specialElement} {
 
           append s "currentVal = baseVal+factorVal,"
           append s "optionVal = (optionMap\[currentVal\] != undefined) ? optionMap\[currentVal\] : 6;"
-          append s "window.setTimeout(function() {jQuery(\"#timeDelay_\" + prn + \"_\" + pref).val(optionVal).change();}, 50);"
+          append s "window.setTimeout(function() {jQuery(\"#timeDelay_\" + prn + \"_\" + pref).val(optionVal).change();}, 10);"
 
           #append s "console.log(\"DELAY baseVal: \" + baseVal + \" - factorVal: \" + factorVal + \" - currentVal: \" + currentVal + \" - optionVal: \" + optionVal);"
 

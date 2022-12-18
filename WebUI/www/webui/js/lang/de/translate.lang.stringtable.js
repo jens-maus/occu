@@ -334,6 +334,9 @@ jQuery.extend(true,langJSON, {
     "stringTableDisplayClock" : "Uhrsymbol",
     "stringTableDisplayDoor" : "T%FCrsymbol",
     "stringTableDisplayEnergyOptions" : "Die Anzeige schaltet sich aus nach",
+    "stringTableDisplayInputTransmitterTitle" : "Glasdisplay",
+    "stringTableDisplayInputLevelTransmitterTitle" : "Glasdisplay",
+    "stringTableDisplayInputThermostatTransmitterTitle" : "Glasdisplay",
     "stringTableDisplayInverting" :  "Displayinvertierung",
     "stringTableDisplayMessageShowTime" : "Anzeigedauer f%FCr Zentralen-Nachrichten",
     "stringTableDisplayMessageShowTimePermanent" : "dauerhaft",
@@ -362,7 +365,7 @@ jQuery.extend(true,langJSON, {
     "stringTableDurationUnitH" : "Einheit Zeitdauer: Stunden",
     "stringTableDurationUnitM" : "Einheit Zeitdauer: Minuten",
     "stringTableDurationUnitS" : "Einheit Zeitdauer: Sekunden",
-    "stringTableDurationUnit10MS" : "Einheit Zeitdauer: 10 mS",
+    "stringTableDurationUnit10MS" : "Einheit Zeitdauer: 10 ms",
     "stringTableDurationValue" : "Wert Zeitdauer",
     "stringTableDuration" : "Zeitdauer",
     "stringTableDutyCycleFalse" : "Dutycycle OK",
@@ -854,12 +857,14 @@ jQuery.extend(true,langJSON, {
     "stringTableTxMinDelay" : "Mindestsendeabstand",
     "stringTableTxMinDelayUnit" : "Einheit des Mindestsendeabstandes",
     "stringTableTxMinDelayValue" : "Wert Mindestsendeabstand",
+    "stringTableUniversalLightReceiverTitle" : "LED Controller",
     "stringTableUnreachFalse" : "Ger%E4tekommunikation OK",
     "stringTableUnreachTrue" : "Ger%E4tekommunikation gest%F6rt",
     "stringTableUnreachFalseBR" : "Ger%E4tekommunikation<br/>OK",
     "stringTableUnreachTrueBR" : "Ger%E4tekommunikation<br/> gest%F6rt",
     "stringTableValveAdaptionFalse" : "Adaptionsfahrt nicht aktiv",
     "stringTableValveAdaptionTrue" : "Adaptionsfahrt aktiv",
+
     "stringTableValveStateAdaptionDone" : "Adaptionsfahrt durchgef%FChrt",
     "stringTableValveStateAdaptionInProgress" : "Adaptionsfahrt aktiv",
     "stringTableValveStateAdjToSmall" : "Ventilstellbereich zu klein",
@@ -871,6 +876,9 @@ jQuery.extend(true,langJSON, {
     "stringTableValveStateToTight" : "Ventil schwerg%E4ngig / Ventil klemmt",
     "stringTableValveStateTrue" : "Heizventil ge%F6ffnet",
     "stringTableValveStateWaitForAdaption" : "Warte auf Adaptionsfahrt",
+
+
+
     "stringTableVentClosed" : "Ventil schlie%DFen",
     "stringTableVentOpen" : "Ventil %F6ffnen",
     "stringTableVirtualDimmerErrorLoadFailure" : "Lastfehler",
@@ -1128,7 +1136,7 @@ jQuery.extend(true,langJSON, {
     "stringTableRampTimeUnitH" : "Einheit Rampenzeit: Stunden",
     "stringTableRampTimeUnitM" : "Einheit Rampenzeit: Minuten",
     "stringTableRampTimeUnitS" : "Einheit Rampenzeit: Sekunden",
-    "stringTableRampTimeUnit10MS" : "Einheit Rampenzeit: 10 mS",
+    "stringTableRampTimeUnit10MS" : "Einheit Rampenzeit: 10 ms",
     "stringTableRampTimeValue" : "Wert Rampenzeit",
     "stringTableRampTime" : "Rampenzeit",
     "stringTableIdentificationModeLCDBacklightFalse" : "Beleuchtung Display: AUS",
@@ -1396,3 +1404,13 @@ langJSON.de.stringTableColorBehaviourFlashFast = langJSON.de.optionBlinkFlashFas
 langJSON.de.stringTableColorBehaviourBillowSlow = langJSON.de.optionBlinkBillowSlow;
 langJSON.de.stringTableColorBehaviourBillowMiddle = langJSON.de.optionBlinkBillowMiddle;
 langJSON.de.stringTableColorBehaviourBillowFast = langJSON.de.optionBlinkBillowFast;
+
+langJSON.de.stringTableValveState_0 = langJSON.de.stringTableValveStateNotAvailable;
+langJSON.de.stringTableValveState_1 = langJSON.de.stringTableValveStateRunToStart;
+langJSON.de.stringTableValveState_2 = langJSON.de.stringTableValveStateWaitForAdaption;
+langJSON.de.stringTableValveState_3 = langJSON.de.stringTableValveStateAdaptionInProgress;
+langJSON.de.stringTableValveState_4 = langJSON.de.stringTableValveStateAdaptionDone;
+langJSON.de.stringTableValveState_5 = langJSON.de.stringTableValveStateToTight;
+langJSON.de.stringTableValveState_6 = langJSON.de.stringTableValveStateAdjTooBig;
+langJSON.de.stringTableValveState_7 = langJSON.de.stringTableValveStateAdjToSmall;
+langJSON.de.stringTableValveState_8 = langJSON.de.stringTableValveStateErrorPosition;

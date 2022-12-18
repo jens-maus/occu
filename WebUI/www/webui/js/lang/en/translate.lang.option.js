@@ -34,6 +34,7 @@ jQuery.extend(true, langJSON, {
     "optionColorYELLOW" : "Yellow",
     "optionConvectorActive" : "Active convector (with fan)",
     "optionConvectorPassiv" : "Passive convector",
+    "optionDeactivated" : "Deactivated",
     "optionDisable" : "Inactive",
     "optionDoorLockAction" : "Mode for door lock drive",
     "optionDoorLockUser" : "User authorisation",
@@ -153,6 +154,7 @@ jQuery.extend(true, langJSON, {
     "optionUnit60M": "60 minutes",
     "optionUnit60S" : "60 seconds",
     "optionUnit6M": "6 minutes",
+    "optionUnit7S" : "7 seconds",
     "optionUnit7D" : "7 days",
     "optionUnit8D" : "8 days",
     "optionUnit8H" : "8 hours",
@@ -168,6 +170,12 @@ jQuery.extend(true, langJSON, {
     "optionWeeklyProfile4" : "4",
     "optionWeeklyProfile5" : "5",
     "optionWeeklyProfile6" : "6",
+
+    "comment" : "Relase C/2022",
+    "optionRGBW" : "RGBW",
+    "optionRGB" : "RGB",
+    "option2xTunableWhite" : "Tunable White",
+    "option4xPWM" : "Single Channels",
 
     "noMoreKeys" : ""
   }
